@@ -162,9 +162,12 @@ function Navbar(props) {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <Link to={page}>
+                   <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
+                </Link>
+               
               ))}
             </Menu>
           </Box>
