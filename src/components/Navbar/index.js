@@ -109,8 +109,8 @@ function Navbar(props) {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" style={{backgroundImage:'linear-gradient(to right, #fc3003,#fc7f03,#fcdb03)'}}>
+    <AppBar position="static" style={{backgroundImage:'linear-gradient(to right, #fc3003,#fc7f03,#fcdb03)'}}>
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <Diversity2Icon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
@@ -172,6 +172,7 @@ function Navbar(props) {
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <Link to="/" style={{textDecoration:"none"}}>
           <Typography
             variant="h5"
             noWrap
@@ -190,6 +191,8 @@ function Navbar(props) {
           >
             RELISH
           </Typography>
+          </Link>
+          
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
                 <Link to={page} style={{textDecoration:'none'}}>

@@ -303,7 +303,6 @@ function getStyles(name, personName, theme) {
                                 discountedPrice={cake.discountedPrice}
                                 rating={cake.rating}
                                 sellingStatus={cake.sellingStatus}
-                                ordername={ordername}
                                 order = {ordered}
                     />
                     </Grid>

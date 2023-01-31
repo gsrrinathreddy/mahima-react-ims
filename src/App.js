@@ -20,9 +20,10 @@ function App() {
       <BrowserRouter>
       <Navbar />
       <Routes>
+         <Route path='/' element={<Flowers/>}></Route>
         <Route path='/Cakes' element={<Cakes/>}></Route>
         <Route path='/Cart' element={<ViewCart/>}></Route>
-        <Route path='/Relish' element={<Relish/>}></Route>
+        {/* <Route path='/Relish' element={<Relish/>}></Route> */}
 
         <Route path='/IceCreams' element={<IceCreams/>}></Route>
         <Route path='/Chocolate' element={<Chocolate/>}></Route>

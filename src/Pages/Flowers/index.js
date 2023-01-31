@@ -1,5 +1,5 @@
 
-import { ordered, restocked, cancelled } from '../../features/cake/cakeSlice';
+import { ordered, restocked, cancelled } from '../../features/flower/flowerSlice';
 import * as React from 'react';
 import {useSelector} from 'react-redux';
 import ItemCard from '../../components/ItemCard';
@@ -51,7 +51,7 @@ export default function Flowers(){
     };
     const flowersList = [
         {
-            title:"Bakingo Cake",
+            title:"Orange Blossom",
             subheader:"Powered by Nature",
             cardMedia:BakingoCake,
             actualPrice:100,
@@ -61,7 +61,7 @@ export default function Flowers(){
 
         },
         {
-            title:"Cake Square",
+            title:"Stramonium",
             subheader:"April showers bring May flowers",
             cardMedia:CakeSquare,
             actualPrice:145,
@@ -71,7 +71,7 @@ export default function Flowers(){
 
         },
         {
-            title:"Chocolate Funfetti",
+            title:"Star Jasmine",
             subheader:"Let love grow",
             cardMedia:ChocolateFunfetti,
             actualPrice:200,
@@ -81,7 +81,7 @@ export default function Flowers(){
 
         },
         {
-            title:"Chocolate Cake",
+            title:"Primrose",
             subheader:"Be nice or leaf",
             cardMedia:Chocolate,
             actualPrice:145,
@@ -90,7 +90,7 @@ export default function Flowers(){
             sellingStatus:"Best Seller"
         },
         {
-            title:"Cocomelon Cake",
+            title:"Glory Lily",
             subheader:"Life is better with flowers",
             cardMedia:CocomelonCake,
             actualPrice:135,
@@ -100,7 +100,7 @@ export default function Flowers(){
 
         },
         {
-            title:"Eggless Chocolate Cake",
+            title:"Peacock Flower",
             subheader:"Soul speaks in flowers",
             cardMedia:EgglessChocolate,
             actualPrice:120,
@@ -110,7 +110,7 @@ export default function Flowers(){
 
         },
         {
-            title:"Eggless Chocolate Cake",
+            title:"Pansy",
             subheader:"Wall flower",
             cardMedia:FondantWedding,
             actualPrice:120,
@@ -121,7 +121,7 @@ export default function Flowers(){
         },
 
         {
-            title:"Chocolate Funfetti",
+            title:"Oleander",
             subheader:"Flowers bloom after rain falls",
             cardMedia:FunfettiCupcakes,
             actualPrice:200,
@@ -131,7 +131,7 @@ export default function Flowers(){
 
         },
         {
-            title:"Chocolate Cake",
+            title:"Narcissus",
             subheader:"The Earth laughs in flowers",
             cardMedia:Grapeberry,
             actualPrice:120,
@@ -141,7 +141,7 @@ export default function Flowers(){
 
         },
         {
-            title:"Fondent Wedding Cake",
+            title:"Magnolia",
             subheader:"Life is too short not to buy flowers",
             cardMedia:NumberCakes,
             actualPrice:180,
@@ -235,6 +235,7 @@ function getStyles(name, personName, theme) {
                                 rating={flower.rating}
                                 sellingStatus={flower.sellingStatus}
                                 ordername={ordername}
+                                order = {ordered}
                     />
                     </Grid>
                     

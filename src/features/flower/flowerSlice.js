@@ -3,7 +3,13 @@ import {createSlice} from '@reduxjs/toolkit';
 const initialState={
     numOfFlowers : 100,
     orderedflowers:0,
-    cancelledflowers:0
+    cancelledflowers:0,
+    flowersList:{
+        name:'',
+        qty:0,
+        actualPrice:null,
+        discountedPrice:null
+     }
 }
 
 const flowerSlice=createSlice({
@@ -11,13 +17,13 @@ const flowerSlice=createSlice({
     initialState,
     reducers:{
         ordered:(state,action)=>{
-            if(action.payload > state.numOfFlowers){
-                console.log('out of stock')
-            }else{
-                state.numOfFlowers-=action.payload
-                state.orderedflowers +=parseInt(action.payload)
-
-            }
+            state.numOfFlowers-=action.payload
+            state.orderedflowers +=parseInt(action.payload.qty)
+            
+            state.flowersList.qty = action.payload.qty
+             state.flowersList.actualPrice = action.payload.actualPrice
+             state.flowersList.discountedPrice = action.payload.discountedPrice
+             state.flowersList.name = action.payload.title
              
         },
         restocked:(state,action)=>{

@@ -1,6 +1,7 @@
 import { Box } from '@mui/system';
 import * as React from 'react';
 import {useSelector} from 'react-redux';
+import { ordered } from '../../features/chocolates/chocolateSlice';
 import ItemCard from '../../components/ItemCard';
 import BakingoCake from '../../assets/chocolates/choco8.jpg'
 import CakeSquare from '../../assets/chocolates/choco13.jpg'
@@ -51,121 +52,121 @@ export default function Chocolate(){
     };
     const chocolatesList = [
         {
-            title:"Bakingo Cake",
+            title:"Hershey’s",
             subheader:"Super Chocolate",
             cardMedia:BakingoCake,
             actualPrice:100,
-            discountedPrice:75,
+            discountedPrice:80,
             rating:4.2,
             sellingStatus:"Best Seller"
 
         },
         {
-            title:"Cake Square",
+            title:"Jolly Ranchers",
             subheader:"Made from Heart",
             cardMedia:CakeSquare,
             actualPrice:145,
-            discountedPrice:125,
+            discountedPrice:130,
             rating:4.3,
             sellingStatus:"Premium"
 
         },
         {
-            title:"Chocolate Funfetti",
+            title:"Kit Kats",
             subheader:"Have Fun of Chocolate Flavor",
             cardMedia:ChocolateFunfetti,
             actualPrice:200,
-            discountedPrice:155,
+            discountedPrice:180,
             rating:4.5,
             sellingStatus:"Out of Stock"
 
         },
         {
-            title:"Chocolate Cake",
+            title:"Ice Breakers",
             subheader:"Chocolate of Desire",
             cardMedia:ChocolateDear,
             actualPrice:145,
-            discountedPrice:125,
+            discountedPrice:130,
             rating:4.8,
             sellingStatus:"Best Seller"
         },
         {
-            title:"Cocomelon Cake",
+            title:"Cadbury",
             subheader:"Chocolate of Dreams",
             cardMedia:CocomelonCake,
             actualPrice:135,
-            discountedPrice:95,
+            discountedPrice:100,
             rating:4.8,
             sellingStatus:"Best Seller"
 
         },
         {
-            title:"Eggless Chocolate Cake",
+            title:"Godiva",
             subheader:"Chocolicious",
             cardMedia:EgglessChocolate,
             actualPrice:120,
-            discountedPrice:105,
+            discountedPrice:70,
             rating:3.8,
             sellingStatus:"Best Seller"
 
         },
         {
-            title:"Eggless Chocolate Cake",
+            title:"Dove",
             subheader:"Guilty Pleasure",
             cardMedia:FondantWedding,
             actualPrice:120,
-            discountedPrice:105,
+            discountedPrice:100,
             rating:3.8,
             sellingStatus:"Best Seller"
 
         },
 
         {
-            title:"Chocolate Funfetti",
+            title:"Ghirardelli",
             subheader:"Have Fun Filled with Chocolate",
             cardMedia:FunfettiCupcakes,
             actualPrice:200,
-            discountedPrice:155,
+            discountedPrice:145,
             rating:4.5,
             sellingStatus:"Out of Stock"
 
         },
         {
-            title:"Chocolate Cake",
+            title:"Guylian",
             subheader:"Choco Feast",
             cardMedia:Grapeberry,
             actualPrice:120,
-            discountedPrice:105,
+            discountedPrice:103,
             rating:3.8,
             sellingStatus:"Best Seller"
 
         },
         {
-            title:"Fondent Wedding Cake",
+            title:"Kinder",
             subheader:"Feel Heavenly",
             cardMedia:NumberCakes,
             actualPrice:180,
-            discountedPrice:145,
+            discountedPrice:130,
             rating:4.4,
             sellingStatus:"Best Seller"
 
         },
         {
-            title:"Fondent Wedding Cake",
+            title:"Russell Stover",
             subheader:"Chocolate Arise",
             cardMedia:RainbowCake,
             actualPrice:180,
-            discountedPrice:145,
+            discountedPrice:150,
             rating:4.4,
             sellingStatus:"Best Seller"
 
         },
         {
-            title:"Number Cakes Recipe",
+            title:"Toblerone",
             subheader:"Chocolate Fountain",
             cardMedia:NumberCakes,
             actualPrice:230,
-            discountedPrice:205,
+            discountedPrice:200,
             rating:4.1,
             sellingStatus:"Best Seller"
 
@@ -255,6 +256,7 @@ function getStyles(name, personName, theme) {
                                 rating={choco.rating}
                                 sellingStatus={choco.sellingStatus}
                                 ordername={ordername}
+                                order={ordered}
                     />
                     </Grid>
                     

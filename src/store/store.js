@@ -3,6 +3,7 @@ import cakeReducer from '../features/cake/cakeSlice';
 import icecreamReducer from '../features/icecream/icecreamSlice';
 import chocolateReducer from '../features/chocolates/chocolateSlice';
 import flowerReducer from '../features/flower/flowerSlice'
+import cartReducer from '../features/carts/cartSlice'
 import logger from 'redux-logger';
 
 const store=configureStore({
@@ -11,7 +12,8 @@ const store=configureStore({
      cake:cakeReducer,
      icecream: icecreamReducer,
      chocolate: chocolateReducer,
-     flower: flowerReducer
+     flower: flowerReducer,
+     cart: cartReducer
 
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)

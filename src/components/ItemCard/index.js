@@ -28,6 +28,8 @@ import {ordered as flowerOrdered} from '../../features/flower/flowerSlice';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import { ThemeProvider, createTheme } from '@mui/system';
+ import Snackbar from '@mui/material/Snackbar';
+ import MuiAlert from '@mui/material/Alert';
 
 
 
@@ -50,6 +52,9 @@ const StyledRating = styled(Rating)({
       color: '#ff3d47',
     },
   });
+   const Alert = React.forwardRef(function Alert(props, ref) {
+   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+ });
   
 export default function ItemCard(props) {
     let title = props.title
@@ -68,6 +73,19 @@ export default function ItemCard(props) {
   const dispatch = useDispatch();
   let [qty, setQty] = useState(0);
   let [count, setCount] = useState(0)
+  const [open, setOpen] = React.useState(false);
+
+     const handleClick = () => {
+       setOpen(true);
+     };
+  
+     const handleClose = (event, reason) => {
+       if (reason === 'clickaway') {
+         return;
+       }
+  
+       setOpen(false);
+    };
 
       
   let params = {
@@ -143,15 +161,15 @@ export default function ItemCard(props) {
           onChange={(e)=>setQty(e.currentTarget.value)}
           variant="standard"
         />
-        <Button style={{backgroundColor: '#262261', color:'#fff'}} onClick={()=>{
-            if(ordername == 'cake'){
+        <Button style={{backgroundColor: '#262261', color:'#fff'}} onClick={()=>{handleClick()
+            
                 dispatch(orderPlaced(params))
-            }else if(ordername == 'chocolate'){
-                dispatch(chocolateOrdered(qty))
-            }else if(ordername == 'flower'){
-                dispatch(flowerOrdered(qty))
+           
+              //  dispatch(chocolateOrdered(params))
+           
+              //  dispatch(flowerOrdered(params))
             }
-        }}
+        }
            
             >Add</Button>
         <CartComponent badgeContent = {qty}/>
@@ -159,6 +177,11 @@ export default function ItemCard(props) {
           <ShareIcon />
         </IconButton> */}
         <Button style={{backgroundColor: '#db1c5d', color:'#fff'}}>BUY NOW</Button>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          {qty} items are added in your cart!!!
+         </Alert>
+       </Snackbar>
       </CardActions>
 
     </Card>
