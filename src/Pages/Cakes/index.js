@@ -268,7 +268,7 @@ export default function Cakes() {
           </Select>
         </FormControl>
       </Box>
-      <StepperIcon />
+
       <br />
       <Grid
         container

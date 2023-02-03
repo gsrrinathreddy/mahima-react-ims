@@ -75,7 +75,7 @@ export default function ItemCard(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   const dispatch = useDispatch();
-  let [qty, setQty] = useState(0);
+  let [qty, setQty] = useState(1);
   let [count, setCount] = useState(0);
   const [open, setOpen] = React.useState(false);
 
@@ -91,9 +91,9 @@ export default function ItemCard(props) {
     setOpen(false);
   };
 
-  // function HOC(props) {
-  //   return <h5 style={{ backgroundColor: { color1 } }}>{props.label}</h5>;
-  // }
+  function HOC(props) {
+    return <h5 style={{ backgroundColor: { color1 } }}>{props.label}</h5>;
+  }
 
   let params = {
     title: title,
@@ -177,8 +177,12 @@ export default function ItemCard(props) {
           />
           <br />
           <TextField
-            label="Quantity"
-            id="standard-size-normal"
+            label="Qty"
+            type="number"
+            InputProps={{
+              inputProps: { min: 0 },
+            }}
+            min="0"
             defaultValue="1"
             sx={{ width: "5ch" }}
             value={qty}

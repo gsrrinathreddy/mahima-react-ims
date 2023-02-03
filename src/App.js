@@ -13,6 +13,8 @@ import Relish from "./Pages/Relish";
 import HomePage from "./Pages/HomePage";
 import DeliveryStatus from "./Pages/DeliveryStatus";
 import NotFound from "./Pages/NotFound";
+import SignIn from "./Pages/SignIn";
+import Checkout from "./Pages/Checkout";
 
 function App() {
   //let noOfCakes = useSelector((state)=> state.cake.orderedcakes)
@@ -22,8 +24,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Navbar />
+
         <Routes>
-          <Route path="/" element={<Flowers />}></Route>
+          <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/Cakes" element={<Cakes />}></Route>
           <Route path="/Cart" element={<ViewCart />}></Route>
           <Route path="/Hme" element={<DeliveryStatus />}></Route>
@@ -36,6 +39,7 @@ function App() {
           <Route exact path="/Billing" element={<Cakes />}></Route>
           <Route exact path="/Home" element={<Cakes />}></Route>
           <Route path="/order-summary" element={<DeliveryStatus />}></Route>
+          <Route path="/Checkout" element={<Checkout />}></Route>
           <Route path="*" element={<NotFound />}></Route>
         </Routes>
       </BrowserRouter>

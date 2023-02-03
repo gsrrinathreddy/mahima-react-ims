@@ -12,7 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Diversity2Icon from "@mui/icons-material/Diversity2";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
@@ -23,6 +23,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { NavLink } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
@@ -51,6 +52,7 @@ function Navbar(props) {
   let badgeContent = props.badgeContent;
   let noOfCakes = useSelector((state) => state.cake.orderedcakes);
   let numOficecreams = useSelector((state) => state.icecream.orderedicecreams);
+  const navigate = useNavigate();
 
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -101,7 +103,6 @@ function Navbar(props) {
       fontSize: isActive ? "18px" : "16px",
       display: "block",
       color: isActive ? "black" : "white",
-      fontWeight: isActive ? "bold" : "normal",
       marginRight: "10px",
       marginLeft: "10px",
     };
@@ -301,7 +302,7 @@ function Navbar(props) {
               </IconButton>
             </Link>
           </Tooltip>
-          <Box sx={{ flexGrow: 0 }}>
+          {/* <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Profile">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 2 }}>
                 <Avatar src="https://cdn.vectorstock.com/i/1000x1000/83/62/chef-woman-gesturing-ok-vector-20818362.webp" />
@@ -329,7 +330,17 @@ function Navbar(props) {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
+          </Box> */}
+          {/* <Button variant="contained" sx={{ backgroundColor: "#1976d2" }}>
+            Sign in
+          </Button> */}
+          <Button
+            variant="contained"
+            sx={{ backgroundColor: "#fc7f03" }}
+            onClick={() => navigate("/signin")}
+          >
+            Sign In
+          </Button>
         </Toolbar>
       </Container>
     </AppBar>

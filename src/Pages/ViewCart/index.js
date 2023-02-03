@@ -108,7 +108,7 @@ export default function ViewCart() {
         {sum}
       </Box>
       <Button onClick={() => navigate("/Hme")}>Go To delivery</Button>
-      <Button onClick={() => navigate("order-summary")}>Place Order</Button>
+      <Button onClick={() => navigate("/Checkout")}>Place Order</Button>
       <Button onClick={() => navigate("/Hme")}>Stepper Status</Button>
     </>
 
