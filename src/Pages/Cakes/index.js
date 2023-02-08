@@ -26,7 +26,7 @@ import { useState } from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-
+import { favs as wished } from "../../features/cake/cakeSlice";
 import { useTheme } from "@mui/material/styles";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
@@ -42,6 +42,9 @@ export default function Cakes() {
   let initialcakes = useSelector((state) => state.cake.numOfcakes);
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
+
+  const favlist = useSelector((state) => state.favorite.favoriteList);
+  console.log("favlist in cake", favlist);
 
   const handleChange = (event) => {
     const {
@@ -61,7 +64,7 @@ export default function Cakes() {
       discountedPrice: 75,
       rating: 4.2,
       sellingStatus: "Best Seller",
-      color1: "#ff1744",
+      genre: "Eggless Cake",
     },
     {
       title: "Cake Square",
@@ -71,6 +74,7 @@ export default function Cakes() {
       discountedPrice: 125,
       rating: 4.3,
       sellingStatus: "Premium",
+      genre: "Sugar Free",
     },
     {
       title: "Chocolate Funfetti",
@@ -80,6 +84,7 @@ export default function Cakes() {
       discountedPrice: 155,
       rating: 4.5,
       sellingStatus: "Out of Stock",
+      genre: "Customized",
     },
     {
       title: "Chocolate Cake",
@@ -98,6 +103,7 @@ export default function Cakes() {
       discountedPrice: 95,
       rating: 4.8,
       sellingStatus: "Best Seller",
+      genre: "Cheese Cake",
     },
     {
       title: "Eggless Chocolate Cake",
@@ -107,6 +113,7 @@ export default function Cakes() {
       discountedPrice: 105,
       rating: 3.8,
       sellingStatus: "Best Seller",
+      genre: "Fruit Cake",
     },
     {
       title: "Eggless Chocolate Cake",
@@ -126,6 +133,7 @@ export default function Cakes() {
       discountedPrice: 155,
       rating: 4.5,
       sellingStatus: "Out of Stock",
+      genre: "Eggless Cake",
     },
     {
       title: "Chocolate Cake",
@@ -144,6 +152,7 @@ export default function Cakes() {
       discountedPrice: 145,
       rating: 4.4,
       sellingStatus: "Best Seller",
+      genre: "Sugar Free",
     },
     {
       title: "Fondent Wedding Cake",
@@ -295,6 +304,7 @@ export default function Cakes() {
                 sellingStatus={cake.sellingStatus}
                 order={ordered}
                 color1={cake.color1}
+                favs={wished}
               />
             </Grid>
           );

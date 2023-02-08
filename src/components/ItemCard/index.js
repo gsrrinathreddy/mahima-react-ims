@@ -13,26 +13,19 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import CakeIcon from "@mui/icons-material/Cake";
-import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import Rating from "@mui/material/Rating";
 import { Button } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { ordered as cakeOrdered } from "../../features/cake/cakeSlice";
 import CartComponent from "../CartComponent";
-import cakeList from "../../Pages/Cakes";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import { ordered as chocolateOrdered } from "../../features/chocolates/chocolateSlice";
-import { ordered as flowerOrdered } from "../../features/flower/flowerSlice";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import { ThemeProvider, createTheme } from "@mui/system";
 import Snackbar from "@mui/material/Snackbar";
 import MuiAlert from "@mui/material/Alert";
-import Stepper from "@mui/material/Stepper";
-import Step from "@mui/material/Step";
-import StepLabel from "@mui/material/StepLabel";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import ShareIcon from "@mui/icons-material/Share";
+import { useNavigate } from "react-router-dom";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -71,16 +64,32 @@ export default function ItemCard(props) {
   let ordername = props.ordername;
   let orderPlaced = props.order;
   let color1 = props.color1;
+  let favs = props.favs;
 
+  let [active, setActive] = useState();
   const [expanded, setExpanded] = React.useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let [qty, setQty] = useState(1);
   let [count, setCount] = useState(0);
   const [open, setOpen] = React.useState(false);
+  const [openLike, setOpenLike] = React.useState(false);
+  const [openDisLike, setOpenDisLike] = React.useState(false);
+  const [openFav, setOpenFav] = React.useState(false);
 
   const handleClick = () => {
     setOpen(true);
+  };
+  const handleFav = () => {
+    setOpenFav(true);
+  };
+
+  const handleClickLike = () => {
+    setOpenLike(true);
+  };
+  const handleClickDisLike = () => {
+    setOpenDisLike(true);
   };
 
   const handleClose = (event, reason) => {
@@ -89,6 +98,9 @@ export default function ItemCard(props) {
     }
 
     setOpen(false);
+    setOpenLike(false);
+    setOpenDisLike(false);
+    setOpenFav(false);
   };
 
   function HOC(props) {
@@ -101,8 +113,22 @@ export default function ItemCard(props) {
     discountedPrice: discountedPrice,
     qty: parseInt(qty),
   };
+
+  let favourite = {
+    title: title,
+    actualPrice: actualPrice,
+    discountedPrice: discountedPrice,
+    cardMedia: cardMedia,
+    sellingStatus: sellingStatus,
+    qty: parseInt(qty),
+  };
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
+  };
+
+  const like = () => {
+    setActive(!active);
   };
 
   return (
@@ -164,17 +190,29 @@ export default function ItemCard(props) {
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          {/* <IconButton aria-label="add to favorites" onClick={()=>setCount(count + 1)}>
-           Likes{count}
-         <FavoriteIcon/>
-        </IconButton> */}
-          <StyledRating
+          <IconButton
+            onClick={() => {
+              dispatch(favs(favourite));
+            }}
+          >
+            <FavoriteIcon
+              onClick={like}
+              sx={{ color: active ? "red" : "grey" }}
+
+              // onClick={like}
+              // sx={{ color: active ? "red" : "grey" }}
+            />
+          </IconButton>
+          {/* <StyledRating
+            onClick={() => {
+              dispatch(favs(params));
+            }}
             name="customized-color"
             defaultValue={0}
             precision={1}
             icon={<FavoriteIcon />}
             max={1}
-          />
+          /> */}
           <br />
           <TextField
             label="Qty"
@@ -193,8 +231,7 @@ export default function ItemCard(props) {
             style={{ backgroundColor: "#262261", color: "#fff" }}
             onClick={() => {
               handleClick();
-
-              dispatch(orderPlaced(params));
+              if (qty > 0) dispatch(orderPlaced(params));
 
               //  dispatch(chocolateOrdered(params))
 
@@ -204,19 +241,69 @@ export default function ItemCard(props) {
             Add
           </Button>
           <CartComponent badgeContent={qty} />
-          {/* <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton> */}
-          <Button style={{ backgroundColor: "#db1c5d", color: "#fff" }}>
+          <IconButton aria-label="share">
+            <ShareIcon />
+          </IconButton>
+          <Button
+            onClick={() => navigate("/Checkout")}
+            style={{ backgroundColor: "#db1c5d", color: "#fff" }}
+          >
             BUY NOW
           </Button>
-          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <br />
+          <ThumbUpAltIcon
+            onClick={() => {
+              handleClickLike();
+            }}
+          />
+          <ThumbDownIcon
+            onClick={() => {
+              handleClickDisLike();
+            }}
+          />
+
+          <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
             <Alert
               onClose={handleClose}
               severity="success"
               sx={{ width: "100%" }}
             >
               {qty} items are added in your cart!!!
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            open={openLike}
+            autoHideDuration={2000}
+            onClose={handleClose}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="primary"
+              sx={{ width: "100%" }}
+            >
+              You liked {title}!!!
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            open={openDisLike}
+            autoHideDuration={2000}
+            onClose={handleClose}
+          >
+            <Alert
+              onClose={handleClose}
+              severity="error"
+              sx={{ width: "100%" }}
+            >
+              You disliked {title}!!!
+            </Alert>
+          </Snackbar>
+          <Snackbar
+            open={openFav}
+            autoHideDuration={2000}
+            onClose={handleClose}
+          >
+            <Alert onClose={handleClose} severity="info" sx={{ width: "100%" }}>
+              {title} is added to your Favorite List**
             </Alert>
           </Snackbar>
         </CardActions>

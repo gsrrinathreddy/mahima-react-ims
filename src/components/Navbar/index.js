@@ -23,6 +23,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { NavLink } from "react-router-dom";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 import { Navigate } from "react-router-dom";
 
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -43,8 +44,12 @@ function Navbar(props) {
     (state) => state.chocolate.orderedchocolates
   );
   let totalflowers = useSelector((state) => state.flower.orderedflowers);
-
+  let favcake = useSelector((state) => state.cake.faviconcake);
+  let favchocolate = useSelector((state) => state.cake.faviconchoco);
+  let favice = useSelector((state) => state.cake.faviconice);
+  let favflower = useSelector((state) => state.cake.faviconflower);
   let sum = totalcakes + totalicecreams + totalchocolates + totalflowers;
+  let favsum = favcake + favchocolate + favice + favflower;
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -256,6 +261,15 @@ function Navbar(props) {
               <Link to="cart">
                 <IconButton aria-label="cart">
                   <CartComponent badgeContent={sum} />
+                </IconButton>
+              </Link>
+            </Tooltip>
+          </Box>
+          <Box>
+            <Tooltip title="Favorites">
+              <Link to="/favorites">
+                <IconButton aria-label="favorite">
+                  <FavoriteIcon badgeContent={favsum} />
                 </IconButton>
               </Link>
             </Tooltip>

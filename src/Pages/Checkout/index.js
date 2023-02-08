@@ -21,7 +21,7 @@ function Copyright() {
     <Typography variant="body2" color="text.secondary" align="center">
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        www.relishcakecravings.com
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -71,7 +71,7 @@ export default function Checkout() {
       >
         <Toolbar>
           <Typography variant="h6" color="inherit" noWrap>
-            Company name
+            Relish Cake Cravings
           </Typography>
         </Toolbar>
       </AppBar>
@@ -81,7 +81,7 @@ export default function Checkout() {
           sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
         >
           <Typography component="h1" variant="h4" align="center">
-            Checkout
+            Shopping Bag
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (

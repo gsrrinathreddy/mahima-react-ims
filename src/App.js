@@ -15,6 +15,13 @@ import DeliveryStatus from "./Pages/DeliveryStatus";
 import NotFound from "./Pages/NotFound";
 import SignIn from "./Pages/SignIn";
 import Checkout from "./Pages/Checkout";
+import SignUp from "./Pages/SignUp";
+import Profile from "./Pages/Profile";
+import SettingsPage from "./Pages/SettingsPage";
+import FavoritesPage from "./Pages/FavoritesPage";
+import Users from "./Pages/Users";
+import Products from "./Pages/Products";
+import ReceiveOffers from "./Pages/ReceiveOffers";
 
 function App() {
   //let noOfCakes = useSelector((state)=> state.cake.orderedcakes)
@@ -27,11 +34,19 @@ function App() {
 
         <Routes>
           <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/settings" element={<SettingsPage />}></Route>
+          {/* <Route path="/favorites" element={<Users />}></Route> */}
+          <Route path="/ReceiveOff" element={<ReceiveOffers />}></Route>
+          <Route path="/favorites" element={<FavoritesPage />}></Route>
+
+          <Route path="/products" element={<Products />}></Route>
           <Route path="/Cakes" element={<Cakes />}></Route>
           <Route path="/Cart" element={<ViewCart />}></Route>
           <Route path="/Hme" element={<DeliveryStatus />}></Route>
 
-          {/* <Route path='/Relish' element={<Relish/>}></Route> */}
+          <Route path="/Relish" element={<Relish />}></Route>
 
           <Route path="/IceCreams" element={<IceCreams />}></Route>
           <Route path="/Chocolate" element={<Chocolate />}></Route>

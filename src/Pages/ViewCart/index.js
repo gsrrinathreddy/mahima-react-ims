@@ -61,7 +61,16 @@ export default function ViewCart() {
   return (
     <>
       <Box>
-        Order Details:
+        <h3 style={{ fontFamily: "cursive" }}>Order Details:</h3>
+        <span
+          style={{
+            height: "4px",
+            width: "55px",
+            display: "block",
+            margin: "8px auto 0",
+            backgroundColor: "#ff3366",
+          }}
+        ></span>
         <Grid container>
           <Grid md={2}>
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
@@ -107,9 +116,27 @@ export default function ViewCart() {
         })}
         {sum}
       </Box>
-      <Button onClick={() => navigate("/Hme")}>Go To delivery</Button>
-      <Button onClick={() => navigate("/Checkout")}>Place Order</Button>
-      <Button onClick={() => navigate("/Hme")}>Stepper Status</Button>
+      <Button
+        variant="contained"
+        sx={{ backgroundColor: "#03DAC5" }}
+        onClick={() => navigate("/Hme")}
+      >
+        Go To delivery
+      </Button>
+      <Button
+        variant="contained"
+        sx={{ backgroundColor: "#5D1049" }}
+        onClick={() => navigate("/Checkout")}
+      >
+        Place Order
+      </Button>
+      <Button
+        variant="contained"
+        sx={{ backgroundColor: "#ff1744" }}
+        onClick={() => navigate("/Checkout")}
+      >
+        Buy Now
+      </Button>
     </>
 
     // Cakes Ordered: {noOfCakes} <Button onClick={()=>{

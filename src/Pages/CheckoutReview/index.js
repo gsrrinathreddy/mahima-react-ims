@@ -5,7 +5,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
 import { useSelector } from "react-redux";
-import cartSlice from "../../features/carts/cartSlice";
 
 const initialState = {
   cartList: [],
@@ -44,7 +43,7 @@ const addresses = [
 ];
 const payments = [
   { name: "Card type", detail: "Visa" },
-  { name: "Card holder", detail: "Ms Mahima Runda" },
+  { name: "Card holder", detail: "Ms Mahima" },
   { name: "Card number", detail: "xxxx-xxxx-xxxx-1234" },
   { name: "Expiry date", detail: "04/2024" },
 ];
@@ -66,6 +65,12 @@ export default function CheckoutReview() {
           </ListItem>
         ))}
         <ListItem sx={{ py: 1, px: 0 }}>
+          <ListItemText primary="Total Items"></ListItemText>
+        </ListItem>
+        {/* <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
+          {item.qty}
+        </Typography> */}
+        <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
 
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
@@ -73,7 +78,7 @@ export default function CheckoutReview() {
               sum += item.qty * item.discountedPrice;
               return <Typography></Typography>;
             })}
-            {sum}
+            Rs {sum}/-
           </Typography>
         </ListItem>
       </List>

@@ -12,6 +12,7 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -23,7 +24,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        www.relishcakecravings.com
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -34,6 +35,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignIn() {
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -41,6 +43,9 @@ export default function SignIn() {
       email: data.get("email"),
       password: data.get("password"),
     });
+  };
+  const Billing = () => {
+    const navigate = useNavigate();
   };
 
   return (
@@ -73,12 +78,12 @@ export default function SignIn() {
               alignItems: "center",
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <Avatar sx={{ m: 1, bgcolor: "rgb(209, 67, 67)" }}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h5">
+            <Button component="h1" variant="h5">
               Sign in
-            </Typography>
+            </Button>
             <Box
               component="form"
               noValidate
@@ -106,13 +111,15 @@ export default function SignIn() {
                 autoComplete="current-password"
               />
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox value="remember" color="success" />}
                 label="Remember me"
               />
               <Button
+                onClick={() => navigate("/Relish")}
                 type="submit"
                 fullWidth
                 variant="contained"
+                backgroundColor="rgb(209, 67, 67)"
                 sx={{ mt: 3, mb: 2 }}
               >
                 Sign In
@@ -124,7 +131,7 @@ export default function SignIn() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
+                  <Link href="/signup" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
